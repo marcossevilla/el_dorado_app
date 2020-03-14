@@ -9,8 +9,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
       home: HomePage(),
+      title: 'Material App',
+      theme: ThemeData(primarySwatch: Colors.amber),
     );
   }
 }
