@@ -35,8 +35,7 @@ class DoralMarker {
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "category": category.toJson(),
+        "category": category.id,
         "name": name,
         "long": long,
         "lat": lat,

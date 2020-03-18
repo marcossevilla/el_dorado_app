@@ -23,4 +23,17 @@ class MarkerService {
 
     return markers;
   }
+
+  Future<bool> postNewMarker(DoralMarker marker) async {
+    http.Response res = await http.post(
+      NetworkUtil.markers,
+      body: marker.toJson(),
+    );
+
+    if (res.statusCode == 201) return true;
+
+    print(res.statusCode);
+    print(res.body);
+    return false;
+  }
 }

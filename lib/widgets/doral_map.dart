@@ -1,10 +1,13 @@
-import 'package:el_dorado_app/models/doral_marker.dart';
-import 'package:el_dorado_app/networking/services/marker_service.dart';
-import 'package:el_dorado_app/utils/hex_color.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:latlong/latlong.dart';
 import 'package:flutter_map/flutter_map.dart';
+
+import '../utils/app_icons.dart' as appIcons;
+import 'package:el_dorado_app/utils/hex_color.dart';
+import 'package:el_dorado_app/utils/dialog_util.dart';
+import 'package:el_dorado_app/models/doral_marker.dart';
+import 'package:el_dorado_app/networking/services/marker_service.dart';
 
 class DoralMap extends StatefulWidget {
   const DoralMap({
@@ -54,22 +57,34 @@ class _DoralMapState extends State<DoralMap> {
                 ),
                 MarkerLayerOptions(
                   markers: snapshot.data.map((marker) {
+                    final icon = appIcons.icons
+                        .where((icon) => icon.title == marker.category.icon);
+
                     return Marker(
                       width: 40.0,
                       height: 40.0,
-                      builder: (context) => Container(
-                        width: 50.0,
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50.0),
-                          color: HexColor.fromHex(marker.category.color),
-                        ),
-                        child: Icon(
-                          FontAwesomeIcons.bicycle,
-                          color: Colors.black,
-                          size: 20.0,
-                        ),
-                      ),
+                      builder: (context) {
+                        return GestureDetector(
+                          onTap: () => showMarkerInfo(
+                            context,
+                            marker,
+                            icon.first.iconData,
+                          ),
+                          child: Container(
+                            width: 50.0,
+                            height: 50.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50.0),
+                              color: HexColor.fromHex(marker.category.color),
+                            ),
+                            child: Icon(
+                              icon.first.iconData,
+                              color: Colors.black,
+                              size: 20.0,
+                            ),
+                          ),
+                        );
+                      },
                       point: LatLng(
                         double.parse(marker.lat),
                         double.parse(marker.long),

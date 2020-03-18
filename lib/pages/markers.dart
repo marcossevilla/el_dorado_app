@@ -24,8 +24,20 @@ class MarkersPage extends StatelessWidget {
             return ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(snapshot.data[index].name),
+                return Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: ListTile(
+                    title: Text(snapshot.data[index].name),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(snapshot.data[index].category.name),
+                        Text(
+                          '${snapshot.data[index].lat}, ${snapshot.data[index].long}',
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             );
