@@ -26,7 +26,7 @@ class CategoriesPage extends StatelessWidget {
               },
             );
           } else {
-            return Text('Error');
+            return Center(child: Text('Error'));
           }
         },
       ),

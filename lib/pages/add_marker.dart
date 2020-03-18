@@ -47,7 +47,7 @@ class _AddMarkerState extends State<AddMarker> {
                     onChanged: (value) => _marker.category = value,
                   );
                 } else {
-                  return Text('Error');
+                  return Center(child: Text('Error'));
                 }
               },
             ),

@@ -11,7 +11,10 @@ class MarkersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Marcadores')),
+      appBar: AppBar(
+        title: Text('Marcadores'),
+        backgroundColor: Colors.blue,
+      ),
       body: FutureBuilder(
         future: _markerService.getAllMarkers(),
         builder: (context, AsyncSnapshot<List<DoralMarker>> snapshot) {
