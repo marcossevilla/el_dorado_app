@@ -17,8 +17,19 @@ class _AddMarkerState extends State<AddMarker> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool _isLoading = false;
-
+  List<Category> _categories = [];
   DoralMarker _marker = DoralMarker();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadCategories();
+  }
+
+  _loadCategories() async {
+    _categories = await _categoryService.getAllCategories();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,29 +73,18 @@ class _AddMarkerState extends State<AddMarker> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 15.0),
-              child: FutureBuilder(
-                future: _categoryService.getAllCategories(),
-                builder: (context, AsyncSnapshot<List<Category>> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  } else if (snapshot.connectionState == ConnectionState.done) {
-                    return DropdownButtonFormField<Category>(
-                      validator: (value) {
-                        if (value == null) return 'Elige una categoría';
-                        return null;
-                      },
-                      items: snapshot.data.map((category) {
-                        return DropdownMenuItem(
-                          child: Text(category.name),
-                          value: category,
-                        );
-                      }).toList(),
-                      onChanged: (value) => _marker.category = value,
-                    );
-                  } else {
-                    return Center(child: Text('Error'));
-                  }
+              child: DropdownButtonFormField<Category>(
+                validator: (value) {
+                  if (value == null) return 'Elige una categoría';
+                  return null;
                 },
+                items: _categories.map((category) {
+                  return DropdownMenuItem(
+                    child: Text(category.name),
+                    value: category,
+                  );
+                }).toList(),
+                onChanged: (value) => _marker.category = value,
               ),
             ),
             _isLoading

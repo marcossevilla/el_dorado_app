@@ -14,7 +14,7 @@ class DoralDial extends StatelessWidget {
       overlayOpacity: 0.5,
       backgroundColor: Theme.of(context).primaryColor,
       foregroundColor: Colors.black,
-      elevation: 8.0,
+      elevation: 0.0,
       shape: CircleBorder(),
       children: [
         SpeedDialChild(
