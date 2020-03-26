@@ -17,6 +17,7 @@ class DoralMarker {
   String name;
   String long;
   String lat;
+  String image;
 
   DoralMarker({
     this.id,
@@ -24,6 +25,7 @@ class DoralMarker {
     this.name,
     this.long,
     this.lat,
+    this.image,
   });
 
   factory DoralMarker.fromJson(Map<String, dynamic> json) => DoralMarker(
@@ -32,6 +34,7 @@ class DoralMarker {
         name: json["name"],
         long: json["long"],
         lat: json["lat"],
+        image: json["business_image"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -39,5 +42,6 @@ class DoralMarker {
         "name": name,
         "long": long,
         "lat": lat,
+        "business_image": "",
       };
 }

@@ -1,3 +1,4 @@
+import 'package:el_dorado_app/models/doral_icon.dart';
 import 'package:flutter/material.dart';
 
 import 'package:latlong/latlong.dart';
@@ -60,36 +61,7 @@ class _DoralMapState extends State<DoralMap> {
                     final icon = appIcons.icons
                         .where((icon) => icon.title == marker.category.icon);
 
-                    return Marker(
-                      width: 40.0,
-                      height: 40.0,
-                      builder: (context) {
-                        return GestureDetector(
-                          onTap: () => showMarkerInfo(
-                            context,
-                            marker,
-                            icon.first.iconData,
-                          ),
-                          child: Container(
-                            width: 50.0,
-                            height: 50.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50.0),
-                              color: HexColor.fromHex(marker.category.color),
-                            ),
-                            child: Icon(
-                              icon.first.iconData,
-                              color: Colors.black,
-                              size: 20.0,
-                            ),
-                          ),
-                        );
-                      },
-                      point: LatLng(
-                        double.parse(marker.lat),
-                        double.parse(marker.long),
-                      ),
-                    );
+                    return _buildMapMarker(marker, icon);
                   }).toList(),
                 ),
               ],
@@ -98,6 +70,39 @@ class _DoralMapState extends State<DoralMap> {
             return Center(child: Text('Error'));
           }
         },
+      ),
+    );
+  }
+
+  Marker _buildMapMarker(DoralMarker marker, Iterable<DoralIcon> icon) {
+    return Marker(
+      width: 40.0,
+      height: 40.0,
+      builder: (context) {
+        return GestureDetector(
+          onTap: () => showMarkerInfo(
+            context,
+            marker,
+            icon.first.iconData,
+          ),
+          child: Container(
+            width: 50.0,
+            height: 50.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+              color: HexColor.fromHex(marker.category.color),
+            ),
+            child: Icon(
+              icon.first.iconData,
+              color: Colors.black,
+              size: 20.0,
+            ),
+          ),
+        );
+      },
+      point: LatLng(
+        double.parse(marker.lat),
+        double.parse(marker.long),
       ),
     );
   }
