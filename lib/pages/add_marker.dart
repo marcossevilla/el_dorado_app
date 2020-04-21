@@ -1,10 +1,10 @@
-import 'package:el_dorado_app/networking/services/marker_service.dart';
-import 'package:el_dorado_app/utils/dialog_util.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/dialog_util.dart';
 import '../models/category.dart';
 import '../models/doral_marker.dart';
-import '../networking/services/category_service.dart';
+import '../services/marker_service.dart';
+import '../services/category_service.dart';
 
 class AddMarker extends StatefulWidget {
   @override
@@ -22,8 +22,13 @@ class _AddMarkerState extends State<AddMarker> {
 
   @override
   void initState() {
-    super.initState();
     _loadCategories();
+    super.initState();
+  }
+
+  @override
+  void setState(fn) {
+    if (mounted) super.setState(fn);
   }
 
   _loadCategories() async {

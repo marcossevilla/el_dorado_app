@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/doral_marker.dart';
-import '../networking/services/marker_service.dart';
+import '../services/marker_service.dart';
 
 class MarkersPage extends StatelessWidget {
   MarkersPage();

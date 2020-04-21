@@ -30,11 +30,8 @@ Widget _buildDoralMarkerCard(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Expanded(
-            flex: 6,
-            child: Image.network(
-              ImageUtil.exportImageToURL(marker.image),
-              fit: BoxFit.contain,
-            ),
+            flex: 5,
+            child: Image.network(ImageUtil.exportImageToURL(marker.image)),
           ),
           Expanded(
             flex: 4,

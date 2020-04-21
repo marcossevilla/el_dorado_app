@@ -1,14 +1,14 @@
-import 'package:el_dorado_app/models/doral_icon.dart';
 import 'package:flutter/material.dart';
 
 import 'package:latlong/latlong.dart';
 import 'package:flutter_map/flutter_map.dart';
 
 import '../utils/app_icons.dart' as appIcons;
-import 'package:el_dorado_app/utils/hex_color.dart';
-import 'package:el_dorado_app/utils/dialog_util.dart';
-import 'package:el_dorado_app/models/doral_marker.dart';
-import 'package:el_dorado_app/networking/services/marker_service.dart';
+import '../utils/hex_color.dart';
+import '../utils/dialog_util.dart';
+import '../models/doral_icon.dart';
+import '../models/doral_marker.dart';
+import '../services/marker_service.dart';
 
 class DoralMap extends StatefulWidget {
   const DoralMap({

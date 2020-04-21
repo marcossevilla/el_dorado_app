@@ -1,6 +1,7 @@
-import 'package:el_dorado_app/models/category.dart';
-import 'package:el_dorado_app/networking/services/category_service.dart';
 import 'package:flutter/material.dart';
+
+import '../models/category.dart';
+import '../services/category_service.dart';
 
 class CategoriesPage extends StatelessWidget {
   CategoriesPage();
@@ -20,9 +21,7 @@ class CategoriesPage extends StatelessWidget {
             return ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(snapshot.data[index].name),
-                );
+                return ListTile(title: Text(snapshot.data[index].name));
               },
             );
           } else {

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../urls.dart';
-import '../../models/doral_marker.dart';
+import '../models/doral_marker.dart';
 
 class MarkerService {
   Future<List<DoralMarker>> getAllMarkers() async {
