@@ -2,9 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import 'package:el_dorado_app/models/category.dart';
-
 import '../urls.dart';
+import '../models/category.dart';
 
 class CategoryService {
   Future<List<Category>> getAllCategories() async {

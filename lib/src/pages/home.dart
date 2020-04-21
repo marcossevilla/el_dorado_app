@@ -1,7 +1,7 @@
-import 'package:el_dorado_app/widgets/doral_dial.dart';
 import 'package:flutter/material.dart';
 
-import 'package:el_dorado_app/widgets/doral_map.dart';
+import '../widgets/doral_map.dart';
+import '../widgets/doral_dial.dart';
 
 class HomePage extends StatelessWidget {
   @override
