@@ -31,8 +31,15 @@ class DoralMarkerCard extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Text(marker.name,
-                        style: Theme.of(context).textTheme.headline5),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Text(
+                        marker.name,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headline5,
+                        maxLines: 2,
+                      ),
+                    ),
                     Text(
                       marker.category.name,
                       style: Theme.of(context).textTheme.headline6,

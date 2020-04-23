@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../models/category.dart';
@@ -16,7 +17,7 @@ class CategoriesPage extends StatelessWidget {
         future: _categoryService.getAllCategories(),
         builder: (context, AsyncSnapshot<List<Category>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: CupertinoActivityIndicator());
           } else if (snapshot.connectionState == ConnectionState.done) {
             return ListView.builder(
               itemCount: snapshot.data.length,

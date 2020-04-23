@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/dialog_util.dart';
@@ -78,19 +79,21 @@ class _AddMarkerState extends State<AddMarker> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 15.0),
-              child: DropdownButtonFormField<Category>(
-                validator: (value) {
-                  if (value == null) return 'Elige una categoría';
-                  return null;
-                },
-                items: _categories.map((category) {
-                  return DropdownMenuItem(
-                    child: Text(category.name),
-                    value: category,
-                  );
-                }).toList(),
-                onChanged: (value) => _marker.category = value,
-              ),
+              child: _categories.isEmpty
+                  ? CupertinoActivityIndicator()
+                  : DropdownButtonFormField<Category>(
+                      validator: (value) {
+                        if (value == null) return 'Elige una categoría';
+                        return null;
+                      },
+                      items: _categories.map((category) {
+                        return DropdownMenuItem(
+                          child: Text(category.name),
+                          value: category,
+                        );
+                      }).toList(),
+                      onChanged: (value) => _marker.category = value,
+                    ),
             ),
             _isLoading
                 ? Center(child: CircularProgressIndicator())
